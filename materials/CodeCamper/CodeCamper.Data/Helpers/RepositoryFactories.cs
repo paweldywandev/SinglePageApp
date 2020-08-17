@@ -71,9 +71,7 @@ namespace CodeCamper.Data
         /// </remarks>
         public Func<DbContext, object> GetRepositoryFactory<T>()
         {
-       
-            Func<DbContext, object> factory;
-            _repositoryFactories.TryGetValue(typeof(T), out factory);
+            _repositoryFactories.TryGetValue(typeof(T), out Func<DbContext, object> factory);
             return factory;
         }
 

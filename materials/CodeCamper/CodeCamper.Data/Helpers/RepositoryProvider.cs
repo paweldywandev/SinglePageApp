@@ -60,8 +60,7 @@ namespace CodeCamper.Data
         public virtual T GetRepository<T>(Func<DbContext, object> factory = null) where T : class
         {
             // Look for T dictionary cache under typeof(T).
-            object repoObj;
-            Repositories.TryGetValue(typeof(T), out repoObj);
+            Repositories.TryGetValue(typeof(T), out object repoObj);
             if (repoObj != null)
             {
                 return (T)repoObj;
@@ -122,7 +121,7 @@ namespace CodeCamper.Data
         /// <remarks>
         /// Should be initialized by constructor injection
         /// </remarks>
-        private RepositoryFactories _repositoryFactories;
+        private readonly RepositoryFactories _repositoryFactories;
 
     }
 }

@@ -15,9 +15,7 @@ namespace CodeCamper.Data
     {
         public EFRepository(DbContext dbContext)
         {
-            if (dbContext == null) 
-                throw new ArgumentNullException("dbContext");
-            DbContext = dbContext;
+            DbContext = dbContext ?? throw new ArgumentNullException("dbContext");
             DbSet = DbContext.Set<T>();
         }
 
